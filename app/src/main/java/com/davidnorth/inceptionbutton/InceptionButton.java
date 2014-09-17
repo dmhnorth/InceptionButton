@@ -77,8 +77,12 @@ public class InceptionButton extends Activity {
                     MediaPlayer mp = MediaPlayer.create(appContext , R.raw.inceptionbutton);
                     mp.start();
 
-                    //TODO figure out where this call should go
-                    mp.release();
+                    mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+
+                        }
+                    });
                     Log.i("onClick", "You pressed the button");
 
 
