@@ -3,7 +3,6 @@ package com.davidnorth.inceptionbutton;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,8 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-
-import java.io.IOException;
 
 
 public class InceptionButton extends Activity {
