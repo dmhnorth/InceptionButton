@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">InceptionButton</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="inception_button_10">Inception Button 1.0</string>
+    <string name="big_red_button">Big Red Button</string>
+
+</resources>
