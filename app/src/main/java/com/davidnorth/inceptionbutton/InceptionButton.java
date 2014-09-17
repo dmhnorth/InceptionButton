@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ public class InceptionButton extends Activity {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
+
         }
     }
 
@@ -50,7 +52,9 @@ public class InceptionButton extends Activity {
     }
 
     public void playSound(View view) {
+
         final MediaPlayer mp = new MediaPlayer();
+
         ImageButton b = (ImageButton) findViewById(R.id.redButton);
 
         b.setOnClickListener(new View.OnClickListener() {
@@ -69,8 +73,15 @@ public class InceptionButton extends Activity {
                 try {
 
                     Context appContext = getApplicationContext();
+
                     MediaPlayer mp = MediaPlayer.create(appContext , R.raw.inceptionbutton);
                     mp.start();
+
+                    //TODO figure out where this call should go
+                    mp.release();
+                    Log.i("onClick", "You pressed the button");
+
+
                 } catch (IllegalStateException e) {
                     e.printStackTrace();
                 }
