@@ -3,15 +3,15 @@ package com.davidnorth.inceptionbutton;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 
 public class InceptionButton extends Activity {
@@ -28,6 +28,7 @@ public class InceptionButton extends Activity {
         }
     }
 
+    //TODO add icons, add changeable graphics. replace audio format to soundpool. extract on click to fragment class
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -51,6 +52,8 @@ public class InceptionButton extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    /**
     public void playSound(View view) {
 
         final MediaPlayer mp = new MediaPlayer();
@@ -92,6 +95,34 @@ public class InceptionButton extends Activity {
 
 
             }
+        });
+    }
+
+     */
+
+    /**
+     * Alternative method using Sound pool to play audio sample
+     * @param view the current view
+     */
+    public void playSound(View view){
+        SoundPool sp = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
+
+        Context appContext = getApplicationContext();
+
+        /** soundId for Later handling of sound pool **/
+        int soundId = sp.load(appContext, R.raw.inceptionbutton, 1);
+
+        sp.play(soundId, 1, 1, 0, 0, 1);
+
+        final MediaPlayer mPlayer = MediaPlayer.create(appContext, R.raw.inceptionbutton);
+        //mPlayer.prepare();
+        mPlayer.start();
+
+        mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+            }
+
         });
     }
 
